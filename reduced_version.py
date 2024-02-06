@@ -1,11 +1,17 @@
 from manim import *
 import streamlit as st
 
-class CreateCircle(Scene):
+class CreateCircle(ThreeDScene):
     def construct(self):
-        circle = Square()  # create a circle
-        circle.set_fill(RED, opacity=0.5)  # set the color and transparency
-        self.play(Create(circle))  # show the circle on screen
+        axes = ThreeDAxes()
+        circle = Circle()
+        self.add(circle)
+        self.wait(1)
+        self.add(axes)
+        self.move_camera(phi=75 * DEGREES, theta=30 * DEGREES)
+        cylinder = Cylinder()
+        self.play(Transform(circle,cylinder))
+        self.wait()
 
 st.title('Bare bones')
 
