@@ -1,0 +1,24 @@
+[
+    {
+        "name": "first section",
+        "type": "default.normal",
+        "video": "CreateCircle_0000.mp4",
+        "codec_name": "h264",
+        "width": 854,
+        "height": 480,
+        "avg_frame_rate": "15/1",
+        "duration": "1.000000",
+        "nb_frames": "15"
+    },
+    {
+        "name": "second section",
+        "type": "default.normal",
+        "video": "CreateCircle_0001.mp4",
+        "codec_name": "h264",
+        "width": 854,
+        "height": 480,
+        "avg_frame_rate": "15/1",
+        "duration": "3.000000",
+        "nb_frames": "45"
+    }
+]

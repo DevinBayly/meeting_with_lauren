@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:/workspaces/meeting_with_lauren/media/videos/reduced_version/480p15/partial_movie_files/CreateCircle/1247278164_3625984653_3114087257.mp4'
+file 'file:/workspaces/meeting_with_lauren/media/videos/reduced_version/480p15/partial_movie_files/CreateCircle/696559639_2378132924_2389499357.mp4'
+file 'file:/workspaces/meeting_with_lauren/media/videos/reduced_version/480p15/partial_movie_files/CreateCircle/696559639_3467822883_271004928.mp4'
