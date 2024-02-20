@@ -16,10 +16,13 @@ class CreateCircle(Scene):
         self.play(Transform(square, circle))  # interpolate the square into the circle
         self.play(FadeOut(square))  # fade out animation
         # # range of theta is also an option
-        for i in range(0,len(rand_xys)):
-            rand_xy = rand_xys[i]
-            line = Line(start=(0,0,0),end=(rand_xy[0],rand_xy[1],0))
-            self.wait()
+        sections = 100
+        for i in range(0,sections+1):
+            theta = np.pi*2/sections*i
+            y = np.sin(theta)
+            x = np.cos(theta)
+            line = Line(start=(0,0,0),end=(x,y,0))
+            self.wait(.1)
             self.add(line)
 
         # self.next_section("first section")
