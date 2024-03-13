@@ -40,11 +40,11 @@ class CreateCircle1(ThreeDScene):
             self.wait(.01)
             self.add(line)
 
-        # circle = Circle()
-        # circle.set_fill(WHITE, opacity = 1.0)
-        # circle.set_stroke(color=WHITE, width=1)
-        # self.add(circle)
-        # self.wait(1)
+        circle = Circle()
+        circle.set_fill(WHITE, opacity = 1.0)
+        circle.set_stroke(color=WHITE, width=1)
+        self.add(circle)
+        self.wait(1)
 
 
         slices = 12
