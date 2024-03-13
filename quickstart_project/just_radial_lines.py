@@ -6,8 +6,6 @@ class CreateCircle1(ThreeDScene):
 # 
         # note that we can create radius and re-use it with all the parts of this
         shape_color = GREEN
-        plane = NumberPlane()
-        self.add(plane)
         axes = ThreeDAxes()
         self.add(axes)
         self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES)
@@ -44,6 +42,10 @@ class CreateCircle1(ThreeDScene):
         cyl.align_to(discs[-1],OUT)
         self.add(cyl)
         self.wait(1)
+        for disc in discs:
+            self.remove(disc)
+        self.wait(1)
+        print("finished removing")
 
 
 
