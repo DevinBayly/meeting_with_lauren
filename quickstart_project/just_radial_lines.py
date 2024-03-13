@@ -9,17 +9,28 @@ class CreateCircle1(ThreeDScene):
         axes = ThreeDAxes()
         self.add(axes)
         self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES)
-        # print("addign in lines to fill 2d circle")
-        # sections = 10
-        # for i in range(0,sections+1):
-        #     theta = np.pi*2/sections*i
-        #     x = np.cos(theta)
-        #     y=np.sin(theta)
-        #     line = Line(start=(0,0,0), end=(x,y,0),color=RED)
-        #     self.wait(.08)
-        #     # self.play(Create(line))
-        #     self.add(line)
+        print("addign in lines to fill 2d circle")
+        sections = 10
+        lines=[]
+        for i in range(0,sections+1):
+            theta = np.pi*2/sections*i
+            x = np.cos(theta)
+            y=np.sin(theta)
+            line = Line(start=(0,0,0), end=(x,y,0),color=shape_color)
+            self.wait(.08)
+            # self.play(Create(line))
+            self.add(line)
+            lines.append(line)
+        first_disc = Circle()
+        first_disc.set_fill(shape_color, opacity=1.0)
+        first_disc.set_stroke(color=WHITE, width=1)
+        self.add(first_disc)
+        self.wait(3)
+        for line in lines:
+            self.remove(line)
+
 # 
+        self.remove(first_disc)
         slices = 12
         discs = []
         for i in range(0,slices+1):
