@@ -5,7 +5,8 @@ import numpy as np
 class AnotherTest(ThreeDScene):
     def construct(self):
         axes = ThreeDAxes()
-        cylinder = Cylinder(fill_color=RED,radius=8, height=3)
+        print("made change")
+        cylinder = Cylinder(fill_color=RED,color=RED,radius=2, height=3,resolution=2,stroke_width=.05,checkerboard_colors=False)
         self.set_camera_orientation(phi=75 * DEGREES, theta=30 * DEGREES)
         self.add(axes, cylinder)
         circle = Circle()  # create a circle
