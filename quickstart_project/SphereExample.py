@@ -21,40 +21,33 @@ class SphereExample(ThreeDScene):
         sections = 10
         lines=[]
         angle_start = 0
-        angle_range = np.pi/2
+        angle_range = np.pi
         # set up inner and outer radii
         inner_radii =0
         outer_radii = radius
-        #for i in range(0,sections+1):
-        #    theta = angle_start+ angle_range/sections*i
-        #    x_start=inner_radii* np.cos(theta)
-        #    y_start=inner_radii* np.sin(theta)
-        #    x_end=outer_radii* np.cos(theta)
-        #    y_end=outer_radii* np.sin(theta)
-        #    line = Line(start=(x_start,y_start,0), end=(x_end,y_end,0),color=shape_color)
-        #    self.wait(.08)
-        #    # self.play(Create(line))
-        #    self.add(line)
-        #    lines.append(line)
+        for i in range(0,sections+1):
+            theta = angle_start+ angle_range/sections*i
+            z_start=inner_radii* np.cos(theta)
+            y_start=inner_radii* np.sin(theta)
+            z_end=outer_radii* np.cos(theta)
+            y_end=outer_radii* np.sin(theta)
+            line = Line(start=(0,y_start,z_start), end=(0,y_end,z_end),color=shape_color)
+            self.wait(.08)
+            # self.play(Create(line))
+            self.add(line)
+            lines.append(line)
         # replace circles with arcs
         first_disc = AnnularSector(inner_radius= inner_radii,outer_radius = outer_radii,start_angle = angle_start,angle=angle_start+angle_range )
         first_disc.set_fill(shape_color, opacity=1.0)
         first_disc.set_stroke(color=WHITE, width=1)
+        first_disc.rotate(PI/2,about_point=ORIGIN,axis=np.array([0,1,0]))
         self.add(first_disc)
         ## want to try to rotate the discs for sphereical
         self.wait(2)
-        a = first_disc
-        print(a.get_bottom())
+        print(first_disc.get_bottom())
         #first_disc.rotate(90,axis=np.array([1,0,0]))
         self.wait(2)
-        self.play(Rotate(first_disc,about_point=a.get_bottom(),angle=2*PI,rate_func=linear))
-        self.add(Dot(a.get_start()).set_color(YELLOW).scale(2))
-        self.add(Dot(a.get_end()).set_color(RED).scale(2))
-        self.add(Dot(a.get_top()).set_color(GREEN_A).scale(2))
-        # self.add(Dot(a.get_bottom()).set_color(GREEN_D).scale(2))
-        self.add(Dot(a.get_center()).set_color(BLUE).scale(2))
-        self.add(Dot(a.point_from_proportion(0.5)).set_color(ORANGE).scale(2))
-        self.add(*[Dot(x) for x in a.points])
+        self.play(Rotate(first_disc,about_point=first_disc.get_bottom(),axis=np.array([1,0,0]),angle=2*PI,rate_func=linear))
         self.wait(2)
         #  for rotation without animation https://blog.furas.pl/python-manim-basic-image-animations-in-manim-gb.html
 
