@@ -1,32 +1,39 @@
 import streamlit as st
 
+# the layout makes sure that things don't get squished
+# TODO update the project title
 st.set_page_config(
-    page_title="Hello",
+    layout="wide",
+    page_title="Project Title",
     page_icon="👋",
 )
+# make two collumns to start with, and then ignore the first one to get your buttons off to the right
+top1,top2 = st.columns(2)
+# TODO update the project title
+top1.write("# Your Title of the project")
+c1, c2, c3,c4 = top2.columns(4)
 
-st.write("# Welcome to Streamlit! 👋")
-c1, c2, c3 = st.columns(3)
+c1.markdown('<a href="/basic_shapes" target="_self"><button>Basic Shapes</button></a>', unsafe_allow_html=True)
+c2.markdown('<a href="/advanced_shapes" target="_self"><button>Advanced Shapes</button></a>', unsafe_allow_html=True)
+c3.markdown('<a href="/custom_shapes" target="_self"><button>Custom Shapes</button></a>', unsafe_allow_html=True)
+c4.markdown('<a href="/additional_resources" target="_self"><button>Additional Resources</button></a>', unsafe_allow_html=True)
+# TODO consider adding in a About Me page
 
-c1.markdown('<a href="/next_page" target="_self">Next page</a>', unsafe_allow_html=True)
-c2.markdown('<a href="/uber_data" target="_self"><button>Uber</button></a>', unsafe_allow_html=True)
-c3.markdown('<a href="/data_frame" target="_self">Data Frame</a>', unsafe_allow_html=True)
-# st.sidebar.success("Select a demo above.")
 
+
+# using the """ allows you to make multiple line strings in python
 st.markdown(
     """
-    Streamlit is an open-source app framework built specifically for
-    Machine Learning and Data Science projects.
-    **👈 Select a demo from the sidebar** to see some examples
-    of what Streamlit can do!
-    ### Want to learn more?
-    - Check out [streamlit.io](https://streamlit.io)
-    - Jump into our [documentation](https://docs.streamlit.io)
-    - Ask a question in our [community
-        forums](https://discuss.streamlit.io)
-    ### See more complex demos
-    - Use a neural net to [analyze the Udacity Self-driving Car Image
-        Dataset](https://github.com/streamlit/demo-self-driving)
-    - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
+    ## Introduction Welcome statement
+    for more instructions on typing out markdown see 
+    https://www.markdownguide.org/basic-syntax/
 """
 )
+st.markdown("---")
+c1,c2 = st.columns(2)
+
+
+c1.video("HelloLaTeX.mp4")
+c2.markdown("""
+### Iterated integral overview
+""")
