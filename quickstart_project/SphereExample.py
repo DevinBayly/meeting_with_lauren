@@ -12,7 +12,7 @@ class SphereExample(ThreeDScene):
 # 
         # note that we can create radius and re-use it with all the parts of this
         # TODO set this up so that a range of the 0-2pi space can be represented at each step
-        radius = 2
+        radius = 1
         shape_color = GREEN
         axes = ThreeDAxes()
         self.add(axes)
@@ -47,9 +47,20 @@ class SphereExample(ThreeDScene):
         print(first_disc.get_bottom())
         #first_disc.rotate(90,axis=np.array([1,0,0]))
         self.wait(2)
-        self.play(Rotate(first_disc,about_point=first_disc.get_bottom(),axis=np.array([1,0,0]),angle=2*PI,rate_func=linear))
+        self.play(Rotate(first_disc,about_point=first_disc.get_bottom(),axis=np.array([0,0,1]),angle=-2*PI,rate_func=linear))
         self.wait(2)
         #  for rotation without animation https://blog.furas.pl/python-manim-basic-image-animations-in-manim-gb.html
+        # the u goes around the theta dir, v is like phi
+        s = Sphere(
+            center=(0, 0, 0),
+            radius=1,
+            resolution=(20, 20),
+            u_range=[0.001, PI/2],
+            v_range=[0, PI]
+        )
+        self.add(s)
+        self.remove(first_disc)
+        self.wait(4)
 
 
 
