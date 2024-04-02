@@ -47,8 +47,22 @@ class SphereExample(ThreeDScene):
         print(first_disc.get_bottom())
         #first_disc.rotate(90,axis=np.array([1,0,0]))
         self.wait(2)
+        ds =[]
+        # TODO figure out how to not draw over the earlier ones with the last ones
+        for i in range(0,sections+1):
+            phi = angle_start+ angle_range/sections*i
+            d = AnnularSector(inner_radius= inner_radii,outer_radius = outer_radii,start_angle = angle_start,angle=angle_start+angle_range )
+            d.rotate(PI/2,about_point=ORIGIN,axis=np.array([0,1,0]))
+            # TODO decide on direction?
+            d.rotate(about_point=d.get_bottom(),axis=np.array([0,0,1]),angle=-phi)
+            d.set_fill(shape_color, opacity=1.0)
+            d.set_stroke(color=WHITE, width=1)
+            ds.append(d)
+            self.add(d)
+            self.wait(.1)
+        for d in ds:
+            self.remove(d)
         self.play(Rotate(first_disc,about_point=first_disc.get_bottom(),axis=np.array([0,0,1]),angle=-2*PI,rate_func=linear))
-        self.wait(2)
         #  for rotation without animation https://blog.furas.pl/python-manim-basic-image-animations-in-manim-gb.html
         # the u goes around the theta dir, v is like phi
         s = Sphere(
