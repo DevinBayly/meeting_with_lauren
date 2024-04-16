@@ -15,6 +15,7 @@ class SphereExample(ThreeDScene):
         radius = 1
         shape_color = GREEN
         axes = ThreeDAxes()
+        self.begin_ambient_camera_rotation(rate=-.2)
         self.add(axes)
         self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES)
         print("addign in lines to fill 2d circle")
@@ -49,8 +50,11 @@ class SphereExample(ThreeDScene):
         self.wait(2)
         ds =[]
         # TODO figure out how to not draw over the earlier ones with the last ones
+        # TODO think about repositioning the camera to prevent the overdrawing , either through explicit coords or ambient (lauren's suggestion)
         for i in range(0,sections+1):
             phi = angle_start+ angle_range/sections*i
+            # TODO figure out why we over rotated
+            # TODO see if we can get all the way over to the 
             d = AnnularSector(inner_radius= inner_radii,outer_radius = outer_radii,start_angle = angle_start,angle=angle_start+angle_range )
             d.rotate(PI/2,about_point=ORIGIN,axis=np.array([0,1,0]))
             # TODO decide on direction?
@@ -65,6 +69,7 @@ class SphereExample(ThreeDScene):
         self.play(Rotate(first_disc,about_point=first_disc.get_bottom(),axis=np.array([0,0,1]),angle=-2*PI,rate_func=linear))
         #  for rotation without animation https://blog.furas.pl/python-manim-basic-image-animations-in-manim-gb.html
         # the u goes around the theta dir, v is like phi
+        # 
         s = Sphere(
             center=(0, 0, 0),
             radius=1,
