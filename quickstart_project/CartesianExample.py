@@ -33,26 +33,26 @@ class CartesianExample(ThreeDScene):
                 poly_points.append(e)
                 poly_points.append(s)
             l = Line(start=s,end=e)
-        #     self.add(l)
-        #     self.wait(.08)
-        # self.wait(3)
+            self.add(l)
+            self.wait(.08)
+        self.wait(3)
         p = Polygon(*poly_points,color=shape_color)
         p.set_fill(opacity=1)
-        # self.add(p)
-        # self.wait(3)
-        # for i in range(sections):
+        self.add(p)
+        self.wait(3)
+        for i in range(sections):
 
-        #     partial = i/sections
-        #     p = Polygon(*poly_points,color=shape_color)
-        #     p.shift((0,0,partial))
-        #     # p.set_fill(opacity=1)
-        #     self.add(p)
-        #     self.wait(.08)
-        # self.wait(3)
+            partial = i/sections
+            p = Polygon(*poly_points,color=shape_color)
+            p.shift((0,0,partial))
+            # p.set_fill(opacity=1)
+            self.add(p)
+            self.wait(.08)
+        self.wait(3)
         box = Cube(side_length=1, fill_opacity=0.7, fill_color=shape_color)
         # TODO get the box to the right location
-        box.move_to((.5,.5,.5))
         self.add(box)
+        box.move_to((.5,.5,.5))
         self.wait(4)
  
 
