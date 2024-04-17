@@ -21,14 +21,13 @@ c4.markdown('<a href="/additional_resources" target="_self"><button>Additional R
 
 
 
+
+
 # using the """ allows you to make multiple line strings in python
-st.markdown(
-    """
-    ## Introduction Welcome statement
-    for more instructions on typing out markdown see 
-    https://www.markdownguide.org/basic-syntax/
-"""
-)
+st.write("""
+## Introduction Welcome Statement
+[title] is an interactive tool designed for students to build intuition with multi-dimensional integration. Our videos utilize Manim Animation to help users make connections between integrals on paper and integrals in 3D space. 
+""")
 st.markdown("---")
 c1,c2 = st.columns(2)
 
