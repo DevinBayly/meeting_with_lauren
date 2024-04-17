@@ -45,6 +45,7 @@ class CartesianExample(ThreeDScene):
             partial = i/sections
             p = Polygon(*poly_points,color=shape_color)
             p.shift((0,0,partial))
+            # TODO make the shapes not outlined skeletons
             # p.set_fill(opacity=1)
             self.add(p)
             self.wait(.08)
