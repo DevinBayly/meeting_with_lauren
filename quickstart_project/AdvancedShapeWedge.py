@@ -9,52 +9,67 @@ class Wedge(ThreeDScene):
         # TODO set this up so that a range of the 0-2pi space can be represented at each step
         radius = 2
         self.shape_color = GREEN
+        # TODO figure out how to not show the negative side, but have camera look at the right place
+        #axes = ThreeDAxes(x_range=(0,5,1),y_range=(0,5,1),z_range=(0,5,1))
         axes = ThreeDAxes()
         self.axes = axes
         self.add(axes)
-        # make some test text and see if we can position it to the right of the screen
-        text = Text("a test")
-        text.to_corner(UR)
-        self.add_fixed_in_frame_mobjects(text)
+
+
         # TODO figure out how to move camera to the right location
+
         self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES)
         print("addign in lines to fill 2d circle")
+
+        # make some test text and see if we can position it to the right of the screen
+        tex = Tex(r"$\int$",r"$\int$","-y + 5", font_size=100)
+        tex.to_corner(UR)
+
+
+        # keeps it from rotating when the camera moves
+        self.add_fixed_in_frame_mobjects(tex)
         # add in the ability to turn the poly slices and lines off or modify, these are lists that we will update later
-        #self.slice_polys = []
-        #self.lines = []
-        #poly_points=[]
-        ## making the polygon for the formula -y+5
-        ## coordinates counter clockwise are xyz 0,0,5 5,0,5 5,5,0 0,5,0 this is the
-        #poly_points.append(self.axes.c2p(0,0,1))
-        #poly_points.append(self.axes.c2p(1,0,1))
-        #poly_points.append(self.axes.c2p(1,1,0))
-        #poly_points.append(self.axes.c2p(0,1,0))
-        #p = Polygon(*poly_points)
-        #p.set_fill(opacity=1)
-        #self.add_foreground_mobjects(p)
-        #self.wait(2)
-        #self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES,zoom=2)
+        self.slice_polys = []
+        self.lines = []
+        poly_points=[]
+        # making the polygon for the formula -y+5
+        # coordinates counter clockwise are xyz 0,0,5 5,0,5 5,5,0 0,5,0 this is the
+        poly_points.append(self.axes.c2p(0,0,1))
+        poly_points.append(self.axes.c2p(1,0,1))
+        poly_points.append(self.axes.c2p(1,1,0))
+        poly_points.append(self.axes.c2p(0,1,0))
+        p = Polygon(*poly_points)
+        p.set_fill(opacity=1)
+        self.add_foreground_mobjects(p)
+        self.wait(2)
+        self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES,zoom=2)
         ## self.remove(p)
         ## TODO make the fill gradual and animated
-        #p.set_fill(opacity=0)
-        #top_z = 1
-        #number_of_planes =4
-        #z_delta = top_z/number_of_planes
-        #sections = 5
-        #animate_drawing = True
-        ## TODO make the color of the segments only for the first pass through the plane
-        ## then for the other ones leave it alone
-        #for np in range(number_of_planes):
-        #    z = top_z - z_delta*np
-        #    y= -z + 1
-        #    self.wait(.08)
-        #    self.make_wedge_piece(sections,z,y,animate=animate_drawing)
-        #    if np ==0:
-        #        # do additional refine step
-        #        sections=15
-        #        animate_drawing = False
-        #        self.make_wedge_piece(sections,z,y,animate=animate_drawing)
-        #        self.wait(1)
+        p.set_fill(opacity=0)
+        top_z = 1
+        # TODO change back
+        number_of_planes =1
+        z_delta = top_z/number_of_planes
+        sections = 5
+        animate_drawing = True
+        # TODO make the color of the segments only for the first pass through the plane
+        # then for the other ones leave it alone
+        for np in range(number_of_planes):
+            z = top_z - z_delta*np
+            y= -z + 1
+            self.wait(.08)
+            self.make_wedge_piece(sections,z,y,animate=animate_drawing)
+            if np ==0:
+                # do additional refine step
+                sections=15
+                animate_drawing = False
+                self.make_wedge_piece(sections,z,y,animate=animate_drawing)
+                self.wait(1)
+
+        # make some test text and see if we can position it to the right of the screen
+        self.remove(tex)
+        tex = Tex(r"$\int$","-2y + 10", font_size=100)
+        self.add_fixed_in_frame_mobjects(tex)
         ## TODO make the stroke color go away for all the drawn polygons
         #self.make_solid()
         #self.wait()
