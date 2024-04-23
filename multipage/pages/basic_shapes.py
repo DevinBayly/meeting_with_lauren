@@ -32,3 +32,15 @@ elif option == "Box":
     st.video("CartesianExample.mp4")
 elif option == "Sphere":
     st.video("SphereExample(1).mp4")
+
+st.write("""
+## Step by Step
+""")
+
+# TODO add this to the conditional sections so that the step by step updates properly
+# make a raw string since latex uses lots of back slashes
+st.latex(r"""
+         a + ar + a r^2 + a r^3 + \cdots + a r^{n-1} =
+    \sum_{k=0}^{n-1} ar^k =
+    a \left(\frac{1-r^{n}}{1-r}\right)
+         """)
