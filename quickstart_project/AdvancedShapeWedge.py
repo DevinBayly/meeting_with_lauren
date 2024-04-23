@@ -70,18 +70,18 @@ class Wedge(ThreeDScene):
         self.remove(tex)
         tex = Tex(r"$\int$","-2y + 10", font_size=100)
         self.add_fixed_in_frame_mobjects(tex)
-        ## TODO make the stroke color go away for all the drawn polygons
-        #self.make_solid()
-        #self.wait()
-        #number_of_planes=20
-        #z_delta = top_z/number_of_planes
-        #for np in range(number_of_planes):
-        #    z = top_z - z_delta*np
-        #    y= -z + 1
-        #    # self.wait(.08)
-        #    self.make_wedge_piece(sections,z,y,animate=animate_drawing,plane_wait=.08,stroke_color=self.shape_color)
-        #    # self.wait(1)
-        #self.wait(2)
+        # TODO make the stroke color go away for all the drawn polygons
+        self.make_solid()
+        self.wait()
+        number_of_planes=20
+        z_delta = top_z/number_of_planes
+        for np in range(number_of_planes):
+            z = top_z - z_delta*np
+            y= -z + 1
+            # self.wait(.08)
+            self.make_wedge_piece(sections,z,y,animate=animate_drawing,plane_wait=.08,stroke_color=self.shape_color)
+            # self.wait(1)
+        self.wait(2)
 
 
         ## start with drawing a vertical line, then a few polygons that extend from the z axis to the largest values of x
