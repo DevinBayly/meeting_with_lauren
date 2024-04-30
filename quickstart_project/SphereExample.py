@@ -107,49 +107,52 @@ r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\the
         # self.remove(fmla_6)
         self.add_fixed_in_frame_mobjects(upper_right_fmla)
         self.wait(2)
-        self.add(axes)
+        #self.add(axes)
         ## add in the axes and draw a first line of the spoke that come down the rho
 
 
         ##self.begin_ambient_camera_rotation(rate=-.2)
-        ophi = self.camera.get_phi()
-        ogamma = self.camera.get_gamma()
-        otheta = self.camera.get_theta()
-        self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES)
+        #ophi = self.camera.get_phi()
+        #ogamma = self.camera.get_gamma()
+        #otheta = self.camera.get_theta()
+        #self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES)
         ##print("addign in lines to fill 2d circle")
         #shape_color=ORANGE
         #upper_right_fmla[1].set_color(shape_color)
-        #sections = 10
+        sections = 10
         #lines=[]
         angle_start = 0
         angle_range = np.pi
         ## set up inner and outer radii
         inner_radii =0
         outer_radii = radius
-        #for i in range(0,sections+1):
-        #    theta = angle_start+ angle_range/sections*i
-        #    z_start=inner_radii* np.cos(theta)
-        #    y_start=inner_radii* np.sin(theta)
-        #    z_end=outer_radii* np.cos(theta)
-        #    y_end=outer_radii* np.sin(theta)
-        #    line = Line(start=(0,y_start,z_start), end=(0,y_end,z_end),color=shape_color)
-        #    self.wait(.08)
-        #    # self.play(Create(line))
-        #    self.add(line)
-        #    lines.append(line)
-        ## replace circles with arcs
+        # TODO recall when the colors need to change to blue
+        shape_color = BLUE
+        ##for i in range(0,sections+1):
+        ##    theta = angle_start+ angle_range/sections*i
+        ##    z_start=inner_radii* np.cos(theta)
+        ##    y_start=inner_radii* np.sin(theta)
+        ##    z_end=outer_radii* np.cos(theta)
+        ##    y_end=outer_radii* np.sin(theta)
+        ##    line = Line(start=(0,y_start,z_start), end=(0,y_end,z_end),color=shape_color)
+        ##    self.wait(.08)
+        ##    # self.play(Create(line))
+        ##    self.add(line)
+        ##    lines.append(line)
+        ### replace circles with arcs
+
         first_disc = AnnularSector(inner_radius= inner_radii,outer_radius = outer_radii,start_angle = angle_start,angle=angle_start+angle_range )
         first_disc.set_fill(shape_color, opacity=1.0)
         first_disc.set_stroke(color=WHITE, width=1)
         first_disc.rotate(PI/2,about_point=ORIGIN,axis=np.array([0,1,0]))
         self.add(first_disc)
-        ## want to try to rotate the discs for sphereical
+        ### want to try to rotate the discs for sphereical
         self.wait(2)
-        print(first_disc.get_bottom())
-        #first_disc.rotate(90,axis=np.array([1,0,0]))
-        # TODO think about the timing on this, is it too long?
-        self.wait(2)#
-        self.remove(axes)
+        #print(first_disc.get_bottom())
+        first_disc.rotate(90,axis=np.array([1,0,0]))
+        ## TODO think about the timing on this, is it too long?
+        #self.wait(2)#
+        #self.remove(axes)
         self.remove(first_disc)
 
 
@@ -162,14 +165,14 @@ r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\the
         self.add_fixed_in_frame_mobjects(fmla_6)
         self.remove(upper_right_fmla)
         self.wait(2)
-        self.move_camera(phi=ophi,theta=otheta)
+        #self.move_camera(phi=ophi,theta=otheta)
         # making the integrations down the page now
         fmla_7 = Tex(
 r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\theta$ \\ ",
 r"$\frac{8}{3}\int_{0}^{2\pi}-cos(\phi)\rvert_{0}^{\pi}\, d\theta$ \\"
             ,font_size = 70)
         fmla_7.to_edge(UP)
-        self.play(Transform(fmla_7,fmla_6))
+        self.play(Transform(fmla_6,fmla_7))
         self.add_fixed_in_frame_mobjects(fmla_7)
         self.remove(fmla_6)
         self.wait(2)
@@ -191,12 +194,41 @@ r"$\frac{8}{3}\int_{0}^{2\pi}-(0) + (1) d\theta$ \\"
 r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\theta$ \\ ",
 r"$\frac{8}{3}\int_{0}^{2\pi}-cos(\phi)\rvert_{0}^{\pi}\, d\theta$ \\",
 r"$\frac{8}{3}\int_{0}^{2\pi}-(0) + (1) d\theta$ \\"
+r"$\frac{8}{3}\int_{0}^{2\pi}d\theta$ \\"
             ,font_size = 70)
         fmla_9.to_edge(UP)
-        self.play(Transform(fmla_9,fmla_8))
+        self.play(Transform(fmla_8,fmla_9))
         self.add_fixed_in_frame_mobjects(fmla_9)
         self.remove(fmla_8)
         self.wait(2)
+
+
+        fmla_10 = Tex(
+r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\theta$ \\ ",
+r"$\frac{8}{3}\int_{0}^{2\pi}-cos(\phi)\rvert_{0}^{\pi}\, d\theta$ \\",
+r"$\frac{8}{3}\int_{0}^{2\pi}-(0) + (1) d\theta$ \\"
+r"$\frac{8}{3}\int_{0}^{2\pi}d\theta$ \\"
+            ,font_size = 70)
+        fmla_10.to_edge(UP)
+        self.play(Transform(fmla_9,fmla_10))
+        self.add_fixed_in_frame_mobjects(fmla_10)
+        self.remove(fmla_9)
+        self.wait(2)
+
+
+        upper_right_fmla = Tex(
+r"$\frac{8}{3}$",r"$\int_{0}^{2\pi}d\theta$ \\",
+font_size = 70)
+        upper_right_fmla.to_edge(UR)
+        self.remove(fmla_10)
+        self.add_fixed_in_frame_mobjects(upper_right_fmla)
+        # add back in the axes, and update our view
+        self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES)
+        self.add(axes)
+        self.wait(2)
+        shape_color=GREEN
+        upper_right_fmla[1].set_color(shape_color)
+        self.wait(1)
 #  
 #  
 # $\frac{8}{3}\int_{0}^{2\pi}d\theta$ \\ 
@@ -204,38 +236,42 @@ r"$\frac{8}{3}\int_{0}^{2\pi}-(0) + (1) d\theta$ \\"
 
 
 
-        #ds =[]
-        ## TODO figure out how to not draw over the earlier ones with the last ones
-        ## TODO think about repositioning the camera to prevent the overdrawing , either through explicit coords or ambient (lauren's suggestion)
-        #for i in range(0,sections+1):
-        #    phi = angle_start+ angle_range/sections*i
-        #    # TODO figure out why we over rotated
-        #    # TODO see if we can get all the way over to the 
-        #    d = AnnularSector(inner_radius= inner_radii,outer_radius = outer_radii,start_angle = angle_start,angle=angle_start+angle_range )
-        #    d.rotate(PI/2,about_point=ORIGIN,axis=np.array([0,1,0]))
-        #    # TODO decide on direction?
-        #    d.rotate(about_point=d.get_bottom(),axis=np.array([0,0,1]),angle=-phi)
-        #    d.set_fill(shape_color, opacity=1.0)
-        #    d.set_stroke(color=WHITE, width=1)
-        #    ds.append(d)
-        #    self.add(d)
-        #    self.wait(.1)
-        #for d in ds:
-        #    self.remove(d)
-        #self.play(Rotate(first_disc,about_point=first_disc.get_bottom(),axis=np.array([0,0,1]),angle=-2*PI,rate_func=linear))
-        ##  for rotation without animation https://blog.furas.pl/python-manim-basic-image-animations-in-manim-gb.html
-        ## the u goes around the theta dir, v is like phi
-        ## 
-        #s = Sphere(
-        #    center=(0, 0, 0),
-        #    radius=1,
-        #    resolution=(20, 20),
-        #    u_range=[0.001, PI/2],
-        #    v_range=[0, PI]
-        #)
-        #self.add(s)
-        #self.remove(first_disc)
-        #self.wait(4)
+        ds =[]
+        # TODO figure out how to not draw over the earlier ones with the last ones
+        # TODO think about repositioning the camera to prevent the overdrawing , either through explicit coords or ambient (lauren's suggestion)
+        for i in range(0,sections+1):
+            phi = angle_start+ angle_range/sections*i
+            # TODO figure out why we over rotated
+            # TODO see if we can get all the way over to the 
+            d = AnnularSector(inner_radius= inner_radii,outer_radius = outer_radii,start_angle = angle_start,angle=angle_start+angle_range )
+            d.rotate(PI/2,about_point=ORIGIN,axis=np.array([0,1,0]))
+            # TODO decide on direction?
+            d.rotate(about_point=d.get_bottom(),axis=np.array([0,0,1]),angle=-phi)
+            d.set_fill(shape_color, opacity=1.0)
+            d.set_stroke(color=WHITE, width=1)
+            ds.append(d)
+            self.add(d)
+            self.wait(.1)
+        for d in ds:
+            self.remove(d)
+        self.wait(1)
+        # self.play(Rotate(first_disc,about_point=first_disc.get_bottom(),axis=np.array([0,0,1]),angle=-2*PI,rate_func=linear))
+        #  for rotation without animation https://blog.furas.pl/python-manim-basic-image-animations-in-manim-gb.html
+        # the u goes around the theta dir, v is like phi
+        # 
+        s = Sphere(
+            center=(0, 0, 0),
+            radius=1,
+            resolution=(20, 20),
+                checkerboard_colors=[shape_color,shape_color],
+                fill_color=shape_color,
+        #     u_range=[0.001, PI/2],
+        #     v_range=[0, PI]
+        )
+
+        self.add(s)
+        self.remove(first_disc)
+        self.wait(4)
 
 
 
