@@ -112,7 +112,9 @@ r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\the
 
 
         ##self.begin_ambient_camera_rotation(rate=-.2)
-
+        ophi = self.camera.get_phi()
+        ogamma = self.camera.get_gamma()
+        otheta = self.camera.get_theta()
         self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES)
         ##print("addign in lines to fill 2d circle")
         #shape_color=ORANGE
@@ -151,7 +153,6 @@ r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\the
         self.remove(first_disc)
 
 
-
         # now we need to go back into the integration to do the next couple steps of this 
         fmla_6 = Tex(
 r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\theta$ \\ "
@@ -161,8 +162,7 @@ r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\the
         self.add_fixed_in_frame_mobjects(fmla_6)
         self.remove(upper_right_fmla)
         self.wait(2)
-
-        self.move_camera(theta = None,phi=None)
+        self.move_camera(phi=ophi,theta=otheta)
         # making the integrations down the page now
         fmla_7 = Tex(
 r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\theta$ \\ ",
