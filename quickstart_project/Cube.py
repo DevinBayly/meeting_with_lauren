@@ -25,33 +25,50 @@ class CubeExample(ThreeDScene):
         intro_text.to_corner(UP)
         self.add_fixed_in_frame_mobjects(intro_text)
         self.add(intro_text)
-        self.wait(2)
+        self.wait(0.1)
+
 
         # TODO see if we can make the bounds smaller fonts
         fmla_1 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r" 1  dx",r"$dy dz$", font_size=70)
         # move to the up right corner
-        fmla_1.next_to(intro_text,DOWN)
-        fmla_1.move_to(RIGHT*4)
-        self.add_fixed_in_frame_mobjects(fmla_1)
-        self.wait(2)
+        fmla_1.next_to(intro_text,DOWN*2)
+        fmla_1.move_to(RIGHT*2)
 
-        cube = Cube(side_length=2, fill_opacity=0.75, fill_color=BLUE, 
+        
+        cube = Cube(side_length=2, fill_opacity=1, fill_color=BLUE, 
         stroke_width=0)
-        cube.scale(.5)
-        cube.next_to(fmla_1,LEFT)
+        self.set_camera_orientation(phi=75*DEGREES, theta=-45*DEGREES)
+        cube.next_to(fmla_1,LEFT*12)
         self.add(cube)
         self.wait(2)
+        self.add_fixed_in_frame_mobjects(fmla_1)
+        self.wait(3)
+        self.remove(cube,intro_text)
+        self.wait(2)
+
+
+        fmla_1.generate_target()
+        fmla_1.target.shift(2*RIGHT + UP).scale(0.9)
+        self.play(MoveToTarget(fmla_1))
 
 
 
         # #FRAME TWO
-        # self.axes = axes
-        # self.add(axes)
+        self.axes = axes
+        self.add(axes)
+        self.wait(2)
+        self.add(axes)
+        shape_color = GREEN
+        line = Line(start=axes.c2p(0,0,0), end=axes.c2p(2,0,0),color=shape_color)
+        self.add(line)
+        self.wait(2)
+
+        # change integral color 
+        # fmla_1 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$\int_{0}^{2}1dx$",r"$dydz$", font_size=100)
+        # self.add_fixed_in_frame_mobjects(fmla_1)
+        # fmla_1[2].set_color(GREEN)
         # self.wait(2)
-        # self.add(axes)
-        # shape_color = GREEN
-        # line = Line(start=axes.c2p(0,0,0), end=axes.c2p(2,0,0),color=shape_color)
-        # self.add(line)
+        # self.remove(fmla_1)
         # self.wait(2)
 
         
@@ -71,11 +88,11 @@ class CubeExample(ThreeDScene):
         # self.move_camera(phi=70 * DEGREES, theta=45 * DEGREES,frame_center=axes.c2p(0,0,0))
 
 
-        # FRAME FOUR
-        # sqr = Square(side_length=2, fill_opacity=1, fill_color=PINK, 
-        # stroke_width=0)
-        # self.add_fixed_in_frame_mobjects(sqr)
-        # self.wait(2)
+        #FRAME FOUR
+        # sqr = Polygon(axes.c2p(0, 0, 0), axes.c2p(0, 2, 0), axes.c2p(2, 2, 0),axes.c2p(2, 0, 0), 
+        #     fill_opacity=1, fill_color=ORANGE, stroke_width=0)
+        # self.add(sqr)
+        # self.wait(1)
 
 
         # slices = 20
@@ -83,8 +100,8 @@ class CubeExample(ThreeDScene):
         # squares = []
         # shape_color = PINK
         # for i in range(0,slices+1):
-        #     sqr = Square(side_length=side, fill_opacity=1, fill_color=PINK, 
-        #     stroke_width=0).shift(i*0.1*OUT)
+        #     sqr = Polygon(axes.c2p(0, 0, 0), axes.c2p(0, 2, 0), axes.c2p(2, 2, 0),axes.c2p(2, 0, 0), 
+        #     fill_opacity=1, fill_color=PINK, stroke_width=0).shift(i*0.1*OUT)
         #     squares.append(sqr)
         #     sqr.set_stroke(color=PINK, width=2)
         #     self.add(sqr)
