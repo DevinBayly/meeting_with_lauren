@@ -5,7 +5,7 @@ import streamlit as st
 config.max_files_cached=800
 config.quality = "low_quality"
 
-class Cube(ThreeDScene):
+class CubeExample(ThreeDScene):
     def construct(self):
         # define objects 
         axes = ThreeDAxes(x_range=(0,5,1),y_range=(0,5,1),z_range=(0,5,1))
@@ -19,87 +19,150 @@ class Cube(ThreeDScene):
         x_end = 2
         y_end = 0
 
-        # INTRO FRAME
-        # intro_text = Text("""Lets find the volume of this cube
-        # using integration""")
-        # intro_text.to_corner(UP)
-        # self.add_fixed_in_frame_mobjects(intro_text)
-        # self.add(intro_text)
+        #INTRO FRAME
+        intro_text = Text("""Lets find the volume of this cube
+        using integration""")
+        intro_text.to_corner(UP)
+        self.add_fixed_in_frame_mobjects(intro_text)
+        self.add(intro_text)
+        self.wait(2)
 
-        # # TODO see if we can make the bounds smaller fonts
-        # fmla_1 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r" 1  dx",r"$dy dz$", font_size=70)
-        # # move to the up right corner
-        # fmla_1.next_to(intro_text,DOWN)
-        # fmla_1.move_to(RIGHT*4)
-        # self.add_fixed_in_frame_mobjects(fmla_1)
-        # self.wait(2)
+        # TODO see if we can make the bounds smaller fonts
+        fmla_1 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r" 1  dx",r"$dy dz$", font_size=70)
+        # move to the up right corner
+        fmla_1.next_to(intro_text,DOWN)
+        fmla_1.move_to(RIGHT*4)
+        self.add_fixed_in_frame_mobjects(fmla_1)
+        self.wait(2)
 
-        # ## side_length not recognized?
-        # # cube = Cube(side_length=2, fill_opacity=0.75, fill_color=ManimColor('#58C4DD'), 
-        # # stroke_width=0,direction=np.array([0,1,0]))
-        # # cube.scale(.5)
-        # # cube.next_to(fmla_1,LEFT)
-        # # self.add(cube)
-        # # self.wait(2)
-        # self.remove(intro_text)
-        # self.remove(fmla_1)
-        # # self.remove(cube)
+        cube = Cube(side_length=2, fill_opacity=0.75, fill_color=BLUE, 
+        stroke_width=0)
+        cube.scale(.5)
+        cube.next_to(fmla_1,LEFT)
+        self.add(cube)
+        self.wait(2)
 
 
 
-        # # FRAME TWO
+        # #FRAME TWO
         # self.axes = axes
         # self.add(axes)
         # self.wait(2)
         # self.add(axes)
-        # shape_color = ORANGE
-        # line = Line(start=(-3,-3,0), end=(0,-3,0),color=shape_color)
+        # shape_color = GREEN
+        # line = Line(start=axes.c2p(0,0,0), end=axes.c2p(2,0,0),color=shape_color)
         # self.add(line)
         # self.wait(2)
 
         
         # FRAME THREE
-        # Fix this mess
-
-        # self.remove(first_disc)
-        # slices = 12
+        # slices = 20
         # lines = []
+        # shape_color = ORANGE
         # for i in range(0,slices+1):
 
-        #     line = Line(start=(x_start,y_start+i*.1,0), end=(x_end,y_end+i*.1,0),color=shape_color)
+        #     line = Line(start=axes.c2p(x_start,y_start+i*.1,0), end=axes.c2p(x_end,y_end+i*.1,0),color=shape_color)
         #     lines.append(line)
-        #     line.set_fill(shape_color, opacity=1.0)
-        #     line.set_stroke(color=WHITE, width=1)
+        #     line.set_stroke(color=ORANGE, width=2)
         #     self.add(line)
         #     # note we can't go belo .066 because our default frame rate is 1/15 because we are doing 15fps ffmpeg
-        #     self.wait(1)
-
-        
-
-
-
+        #     self.wait(0.2)
 
         # self.move_camera(phi=70 * DEGREES, theta=45 * DEGREES,frame_center=axes.c2p(0,0,0))
 
+
+        # FRAME FOUR
+        # sqr = Square(side_length=2, fill_opacity=1, fill_color=PINK, 
+        # stroke_width=0)
+        # self.add_fixed_in_frame_mobjects(sqr)
+        # self.wait(2)
+
+
+        # slices = 20
+        # side = 2
+        # squares = []
+        # shape_color = PINK
+        # for i in range(0,slices+1):
+        #     sqr = Square(side_length=side, fill_opacity=1, fill_color=PINK, 
+        #     stroke_width=0).shift(i*0.1*OUT)
+        #     squares.append(sqr)
+        #     sqr.set_stroke(color=PINK, width=2)
+        #     self.add(sqr)
+        #     # note we can't go belo .066 because our default frame rate is 1/15 because we are doing 15fps ffmpeg
+        #     self.wait(0.2)
+            
+
+
+
         # LATEX PIECES
-        fmla_1 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$\1dxdydz$", font_size=144)
-        self.add(fmla_1)
-        self.wait(2)
+        # fmla_1 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$\int_{0}^{2}1dx$",r"$dydz$", font_size=100)
+        # self.add_fixed_in_frame_mobjects(fmla_1)
+        # fmla_1[2].set_color(GREEN)
+        # self.wait(2)
+        # self.remove(fmla_1)
+        # self.wait(2)
 
-# \[ \int_{0}^{2}\int_{0}^{2}\int_{0}^{2} 1 \,dxdydz \]
-# \[ \int_{0}^{2}\int_{0}^{2}\left. x \right|_{0}^{2}\,dxdydz \]
-# \[ \int_{0}^{2}\int_{0}^{2}2dydz \]
-# \[ \int_{0}^{2}\left. 2y \right|_{0}^{2}\,dz \]
-# \[ \int_{0}^{2}4dz \]
-# \[\left. 4z \right|_{0}^{2} \]
-# \[4(2) - 4(0)\]
-# \[8\]
+        # fmla_2 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$x\rvert_{0}^{2}$",r"$dydz$", font_size=100)
+        # self.add_fixed_in_frame_mobjects(fmla_2)
+        # fmla_2[2].set_color(GREEN)
+        # self.wait(2)
+        # self.remove(fmla_2)
+        # self.wait(2)
+
+        # fmla_3 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$", r"2",r"$dydz$", font_size=100)
+        # self.add_fixed_in_frame_mobjects(fmla_3)
+        # fmla_3[2].set_color(GREEN)
+        # self.wait(2)
+        # self.remove(fmla_3)
+        # self.wait(2)
+
+        # fmla_3a = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2} 2 dy $",r"$dz$", font_size=100)
+        # self.add_fixed_in_frame_mobjects(fmla_3a)
+        # fmla_3a[1].set_color(ORANGE)
+        # self.wait(2)
+        # self.remove(fmla_3a)
+        # self.wait(2)
+
+        # fmla_4 = Tex(r"$\int_{0}^{2}$",r"$2y\rvert_{0}^{2}$",r"$dz$", font_size=100)
+        # self.add_fixed_in_frame_mobjects(fmla_4)
+        # fmla_4[1].set_color(ORANGE)
+        # self.wait(2)
+        # self.remove(fmla_4)
+        # self.wait(2)
+
+        # fmla_5 = Tex(r"$\int_{0}^{2}$",r"4",r"$dz$", font_size=100)
+        # self.add_fixed_in_frame_mobjects(fmla_5)
+        # fmla_5[1].set_color(ORANGE)
+        # self.wait(2)
+        # self.remove(fmla_5)
+        # self.wait(2)
+
+        # fmla_6 = Tex(r"$4\rvert_{0}^{2}$", font_size=100)
+        # self.add_fixed_in_frame_mobjects(fmla_6)
+        # fmla_6[1].set_color(PINK)
+        # self.wait(2)
+        # self.remove(fmla_6)
+        # self.wait(2)
+
+        # fmla_7 = Tex(r"$(4(2)-4(0))$", font_size=100)
+        # self.add_fixed_in_frame_mobjects(fmla_7)
+        # fmla_7[1].set_color(PINK)
+        # self.wait(2)
+        # self.remove(fmla_7)
+        # self.wait(2)
+
+        # fmla_8 = Tex("Volume = 8", font_size=100)
+        # self.add_fixed_in_frame_mobjects(fmla_8)
+        # fmla_8[1].set_color(BLUE)
+        # self.wait(2)
+        # self.remove(fmla_8)
+        # self.wait(2)
 
 
 
-c = Cube()
+c = CubeExample()
 c.render()
-st.video("media/videos/480p15/Cube.mp4")
+st.video("media/videos/480p15/CubeExample.mp4")
 
 
 
