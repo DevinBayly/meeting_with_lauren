@@ -41,77 +41,81 @@ using integration""")
         ## move the formula to the center top
         #self.wait(2)
         #self.remove(fmla_1)
-        fmla_2 = Tex(r"$= \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{2}$",r"$\rho^{2} sin(\phi)d\rho\, d\phi\, d\theta$", font_size=70)
-        # self.add(fmla_2)
-        # TODO figure out why this is suddenly back in the scene even if we wanted to remove it
-        fmla_2.to_edge(UP)
-        self.add(fmla_2)
-        self.wait(2)
-        # perform the on screen integration
-        # TODO IMPORTANT GET THE RIGHT INTEGRATION FROM LAUREN
-        # make use of the & sign to ensure that the alignment stays correct
-
-        ## this is here for reference, it should be the actual form of the integration
-        ## r"""$\int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{2}\rho^{2} sin(\phi)d\rho\, d\phi\, d\theta$ \\
-        ## $\int_{0}^{2\pi}\int_{0}^{\pi}\frac{\rho^{3}}{3} sin(\phi)\rvert_{0}^{2}\, d\phi\, d\theta$ \\ 
-        ## $\int_{0}^{2\pi}\int_{0}^{\pi}(\frac{2^{3}}{3} sin(\phi)) - (\frac{0^{3}}{3} sin(\phi)) d\phi\, d\theta$ \\ 
-        ## $\frac{8}{3}\int_{0}^{2\pi}-cos(\phi)\rvert_{0}^{\pi}\, d\theta$ \\ 
-        ## $\frac{8}{3}\int_{0}^{2\pi}-(0) + (1) d\theta$ \\ 
-        ## $\frac{8}{3}\int_{0}^{2\pi}d\theta$ \\ 
-        ## $\frac{8}{3}(\theta\rvert_{0}^{2\pi})$ \\ 
-        ## $\frac{16\pi}{3}$ \\ 
-
-
-
-        # TODO think about renaming the formulas by the lines that they go up to in the derivation
-        # ampersand!
-        fmla_4 =Tex( 
-        r"""$= \int_{0}^{2\pi}\int_{0}^{\pi}\frac{\rho^{3}}{3} sin(\phi)\rvert_{0}^{2}\, d\phi\, d\theta$ \\ """,font_size=70)
-        # TODO shift formula names down by 1 index
-        fmla_4.next_to(fmla_2,DOWN)
-        # this is how to add it in to the scene with an animation
-        self.play(Write(fmla_4))
-
-        self.wait(2)
-
-
-        fmla_5 = Tex(
-        r"""$\int_{0}^{2\pi}\int_{0}^{\pi}(\frac{2^{3}}{3} sin(\phi)) - (\frac{0^{3}}{3} sin(\phi)) d\phi\, d\theta$ \\ """,font_size=70)
-        fmla_5.next_to(fmla_4,DOWN)
-        self.play(Write(fmla_5))
-        self.wait(2)
-
-        fmla_6 = Tex(
-        r"""$\int_{0}^{2\pi}\int_{0}^{\pi}\frac{8}{3} sin(\phi)\, d\phi\, d\theta$ \\ 
-        """,font_size=70)
-        fmla_6.next_to(fmla_5,DOWN)
-        self.play(Write(fmla_6))
-        self.wait(2)
-
-        ## TODO ask lauren if this is the right time to be pausing in the animation so that we can draw the axes and stuff
-        #upper_right_fmla = Tex(
-        #r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\theta$ \\ "
-        #    ,font_size = 70)
-        #upper_right_fmla.to_edge(UR)
-        #self.remove(fmla_6)
-        #self.add_fixed_in_frame_mobjects(upper_right_fmla)
+        #fmla_2 = Tex(r"$= \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{2}$",r"$\rho^{2} sin(\phi)d\rho\, d\phi\, d\theta$", font_size=70)
+        ## self.add(fmla_2)
+        ## TODO figure out why this is suddenly back in the scene even if we wanted to remove it
+        #fmla_2.to_edge(UP)
+        #self.add(fmla_2)
         #self.wait(2)
-        #self.add(axes)
-        ## add in the axes and draw a first line of the spoke that come down the rho
+        ## perform the on screen integration
+        ## TODO IMPORTANT GET THE RIGHT INTEGRATION FROM LAUREN
+        ## make use of the & sign to ensure that the alignment stays correct
+
+        ### this is here for reference, it should be the actual form of the integration
+        ### r"""$\int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{2}\rho^{2} sin(\phi)d\rho\, d\phi\, d\theta$ \\
+        ### $\int_{0}^{2\pi}\int_{0}^{\pi}\frac{\rho^{3}}{3} sin(\phi)\rvert_{0}^{2}\, d\phi\, d\theta$ \\ 
+        ### $\int_{0}^{2\pi}\int_{0}^{\pi}(\frac{2^{3}}{3} sin(\phi)) - (\frac{0^{3}}{3} sin(\phi)) d\phi\, d\theta$ \\ 
+        ### $\frac{8}{3}\int_{0}^{2\pi}-cos(\phi)\rvert_{0}^{\pi}\, d\theta$ \\ 
+        ### $\frac{8}{3}\int_{0}^{2\pi}-(0) + (1) d\theta$ \\ 
+        ### $\frac{8}{3}\int_{0}^{2\pi}d\theta$ \\ 
+        ### $\frac{8}{3}(\theta\rvert_{0}^{2\pi})$ \\ 
+        ### $\frac{16\pi}{3}$ \\ 
+
+
+
+        ## TODO think about renaming the formulas by the lines that they go up to in the derivation
+        ## ampersand!
+        #fmla_4 =Tex( 
+        #r"""$= \int_{0}^{2\pi}\int_{0}^{\pi}\frac{\rho^{3}}{3} sin(\phi)\rvert_{0}^{2}\, d\phi\, d\theta$ \\ """,font_size=70)
+        ## TODO shift formula names down by 1 index
+        #fmla_4.next_to(fmla_2,DOWN)
+        ## this is how to add it in to the scene with an animation
+        #self.play(Write(fmla_4))
+
+        #self.wait(2)
+
+
+        #fmla_5 = Tex(
+        #r"""$=\int_{0}^{2\pi}\int_{0}^{\pi}(\frac{2^{3}}{3} sin(\phi)) - (\frac{0^{3}}{3} sin(\phi)) d\phi\, d\theta$ \\ """,font_size=70)
+        #fmla_5.next_to(fmla_4,DOWN)
+        #self.play(Write(fmla_5))
+        #self.wait(2)
+
+        #fmla_6 = Tex(
+        #r"""=$\int_{0}^{2\pi}\int_{0}^{\pi}\frac{8}{3} sin(\phi)\, d\phi\, d\theta$ \\ 
+        #""",font_size=70)
+        #fmla_6.next_to(fmla_5,DOWN)
+        #self.play(Write(fmla_6))
+        #self.wait(2)
+
+        #self.remove(fmla_2)
+        #self.remove(fmla_4)
+        #self.remove(fmla_5)
+        #self.remove(fmla_6)
+        ### TODO ask lauren if this is the right time to be pausing in the animation so that we can draw the axes and stuff
+        upper_right_fmla = Tex(
+        r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\theta$ \\ "
+            ,font_size = 70)
+        upper_right_fmla.to_edge(UR)
+        ## remove the formulas from the previous phase of multiline integration
+        self.add_fixed_in_frame_mobjects(upper_right_fmla)
+        self.wait(2)
+        # self.add(axes)
+        # add in the axes and draw a first line of the spoke that come down the rho
 
 
         ##self.begin_ambient_camera_rotation(rate=-.2)
-        #ophi = self.camera.get_phi()
-        #ogamma = self.camera.get_gamma()
-        #otheta = self.camera.get_theta()
-        #self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES)
-        ##print("addign in lines to fill 2d circle")
-        #shape_color=ORANGE
-        #upper_right_fmla[1].set_color(shape_color)
-        #sections = 10
-        #lines=[]
-        #angle_start = 0
-        #angle_range = np.pi
+        ophi = self.camera.get_phi()
+        ogamma = self.camera.get_gamma()
+        otheta = self.camera.get_theta()
+        # self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES)
+        #print("addign in lines to fill 2d circle")
+        shape_color=ORANGE
+        upper_right_fmla[1].set_color(shape_color)
+        sections = 10
+        lines=[]
+        angle_start = 0
+        angle_range = np.pi
         ### set up inner and outer radii
         #inner_radii =0
         #outer_radii = radius
@@ -134,39 +138,34 @@ using integration""")
         #first_disc.set_stroke(color=WHITE, width=1)
         #first_disc.rotate(PI/2,about_point=ORIGIN,axis=np.array([0,1,0]))
         #self.add(first_disc)
-        #### want to try to rotate the discs for sphereical
+        ### want to try to rotate the discs for sphereical
         #self.wait(2)
         ##print(first_disc.get_bottom())
-        ##first_disc.rotate(90,axis=np.array([1,0,0]))
         ### TODO think about the timing on this, is it too long?
-        #self.wait(2)#
-        #self.remove(axes)
+        
+        # self.remove(axes)
         #self.remove(first_disc)
         #shape_color = BLUE
         #for l in lines:
         #    self.remove(l)
 
-
+        self.move_camera(phi=ophi,theta=otheta)
+        upper_right_fmla.generate_target()
+        upper_right_fmla.target.center()
+        upper_right_fmla.target.to_edge(UP)
+        self.play(MoveToTarget(upper_right_fmla))
         ## now we need to go back into the integration to do the next couple steps of this 
-        #fmla_6 = Tex(
-        #r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\theta$ \\ "
-        #    ,font_size = 70)
-        #fmla_6.to_edge(UP)
-        #self.play(Transform(upper_right_fmla,fmla_6))
-        #self.add_fixed_in_frame_mobjects(fmla_6)
-        #self.remove(upper_right_fmla)
-        #self.wait(2)
-        #self.move_camera(phi=ophi,theta=otheta)
-        ## making the integrations down the page now
-        #fmla_7 = Tex(
-        #r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\theta$ \\ ",
-        #r"$\frac{8}{3}\int_{0}^{2\pi}-cos(\phi)\rvert_{0}^{\pi}\, d\theta$ \\"
-        #    ,font_size = 70)
-        #fmla_7.to_edge(UP)
-        #self.play(Transform(fmla_6,fmla_7))
-        #self.add_fixed_in_frame_mobjects(fmla_7)
-        #self.remove(fmla_6)
-        #self.wait(2)
+        # this moves the upper right back to the center
+        self.wait(2)
+
+
+        # making the integrations down the page now
+        fmla_7 = Tex(
+        r"$\frac{8}{3}\int_{0}^{2\pi}-cos(\phi)\rvert_{0}^{\pi}\, d\theta$ \\"
+            ,font_size = 70)
+        fmla_7.next_to(upper_right_fmla,DOWN)
+        self.play(Write(fmla_7))
+        self.wait(2)
 
         #fmla_8 = Tex(
         #r"$\int_{0}^{2\pi}$",r"$\int_{0}^{\pi}\frac{8}{3}sin(\phi)\, d\phi\,$",r"$ d\theta$ \\ ",
@@ -230,6 +229,7 @@ using integration""")
         #ds =[]
         ## TODO figure out how to not draw over the earlier ones with the last ones
         ## TODO think about repositioning the camera to prevent the overdrawing , either through explicit coords or ambient (lauren's suggestion)
+        # TODO make sure to put in the orange annulus before it tries to add in all the rotated shapes
         #for i in range(0,sections+1):
         #    phi = angle_start+ angle_range/sections*i
         #    # TODO figure out why we over rotated
