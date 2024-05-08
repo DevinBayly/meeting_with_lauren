@@ -29,7 +29,7 @@ class CubeExample(ThreeDScene):
 
 
         # TODO see if we can make the bounds smaller fonts
-        fmla_1 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r" 1  dx",r"$dy dz$", font_size=70)
+        fmla_1 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$\int_{0}^{2} 1 dx$",r"$dy dz$", font_size=70)
         # move to the up right corner
         fmla_1.next_to(intro_text,DOWN*2)
         fmla_1.move_to(RIGHT*2)
@@ -44,136 +44,142 @@ class CubeExample(ThreeDScene):
         self.add_fixed_in_frame_mobjects(fmla_1)
         self.wait(3)
         self.remove(cube,intro_text)
+        self.wait(1)
+
+
+        #FRAME TWO
+        fmla_1.generate_target()
+        fmla_1.target.shift(2*UP,LEFT*2)
+        self.play(MoveToTarget(fmla_1))
+        fmla_1[2].set_color(GREEN)
         self.wait(2)
 
 
-        fmla_1.generate_target()
-        fmla_1.target.shift(2*RIGHT + UP).scale(0.9)
-        self.play(MoveToTarget(fmla_1))
+        fmla_2 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$x\rvert_{0}^{2}$",r"$dydz$", font_size=100)
+        fmla_2.next_to(fmla_1,DOWN)
+        self.add_fixed_in_frame_mobjects(fmla_2)
+        #self.play(Write(fmla_2))
+        fmla_2[2].set_color(GREEN)
+        self.wait(3)
+        # self.add_fixed_in_frame_mobjects(fmla_2)
+        # self.wait(2)
+
+        fmla_3 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$", r"2",r"$dy$",r"$dz$", font_size=100)
+        fmla_3.next_to(fmla_2,DOWN)
+        self.add_fixed_in_frame_mobjects(fmla_3)
+        fmla_3[2].set_color(GREEN)
+        self.wait(2)
 
 
 
-        # #FRAME TWO
+
+        #FRAME THREE
+        self.remove(fmla_1,fmla_2)
+        fmla_3.generate_target()
+        fmla_3.target.shift(UP*2,RIGHT*2).scale(.7)
+        self.play(MoveToTarget(fmla_3))
+        self.wait(2)
+
         self.axes = axes
         self.add(axes)
-        self.wait(2)
+        axes.next_to(fmla_3,UP)
+        axes.move_to(LEFT*2)
         self.add(axes)
+        self.wait(2)
         shape_color = GREEN
         line = Line(start=axes.c2p(0,0,0), end=axes.c2p(2,0,0),color=shape_color)
         self.add(line)
         self.wait(2)
 
-        # change integral color 
-        # fmla_1 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$\int_{0}^{2}1dx$",r"$dydz$", font_size=100)
-        # self.add_fixed_in_frame_mobjects(fmla_1)
-        # fmla_1[2].set_color(GREEN)
-        # self.wait(2)
-        # self.remove(fmla_1)
-        # self.wait(2)
-
         
-        # FRAME THREE
-        # slices = 20
-        # lines = []
-        # shape_color = ORANGE
-        # for i in range(0,slices+1):
-
-        #     line = Line(start=axes.c2p(x_start,y_start+i*.1,0), end=axes.c2p(x_end,y_end+i*.1,0),color=shape_color)
-        #     lines.append(line)
-        #     line.set_stroke(color=ORANGE, width=2)
-        #     self.add(line)
-        #     # note we can't go belo .066 because our default frame rate is 1/15 because we are doing 15fps ffmpeg
-        #     self.wait(0.2)
-
-        # self.move_camera(phi=70 * DEGREES, theta=45 * DEGREES,frame_center=axes.c2p(0,0,0))
+        # FRAME FOUR
 
 
-        #FRAME FOUR
-        # sqr = Polygon(axes.c2p(0, 0, 0), axes.c2p(0, 2, 0), axes.c2p(2, 2, 0),axes.c2p(2, 0, 0), 
-        #     fill_opacity=1, fill_color=ORANGE, stroke_width=0)
-        # self.add(sqr)
-        # self.wait(1)
+        fmla_3[1:4].set_color(ORANGE)
+        self.wait(2)
+        slices = 20
+        lines = []
+        shape_color = ORANGE
+        for i in range(0,slices+1):
+
+            line = Line(start=axes.c2p(x_start,y_start+i*.1,0), end=axes.c2p(x_end,y_end+i*.1,0),color=shape_color)
+            lines.append(line)
+            line.set_stroke(color=ORANGE, width=2)
+            self.add(line)
+            # note we can't go belo .066 because our default frame rate is 1/15 because we are doing 15fps ffmpeg
+            self.wait(0.2)
+
+        # FRAME FIVE
+
+        fmla_5 = Tex(r"$\int_{0}^{2}$",r"$2y\rvert_{0}^{2}$",r"$dz$", font_size=100)
+        self.add_fixed_in_frame_mobjects(fmla_5)
+        fmla_5[1].set_color(ORANGE)
+        fmla_5.next_to(fmla_3,DOWN)
+        self.wait(2)
+
+        fmla_6 = Tex(r"$\int_{0}^{2}$",r"4",r"$dz$", font_size=100)
+        self.add_fixed_in_frame_mobjects(fmla_6)
+        fmla_6[1].set_color(ORANGE)
+        fmla_6.next_to(fmla_5,DOWN)
+        self.wait(2)
+        self.remove(fmla_3,fmla_5)
+
+        fmla_6.generate_target()
+        fmla_6.target.shift(UP*5,RIGHT*2).scale(.6)
+        self.play(MoveToTarget(fmla_6))
+        self.wait(2)
+
+        self.move_camera(phi=70 * DEGREES, theta=45 * DEGREES,frame_center=axes.c2p(-2,0,0))
 
 
-        # slices = 20
-        # side = 2
-        # squares = []
-        # shape_color = PINK
-        # for i in range(0,slices+1):
-        #     sqr = Polygon(axes.c2p(0, 0, 0), axes.c2p(0, 2, 0), axes.c2p(2, 2, 0),axes.c2p(2, 0, 0), 
-        #     fill_opacity=1, fill_color=PINK, stroke_width=0).shift(i*0.1*OUT)
-        #     squares.append(sqr)
-        #     sqr.set_stroke(color=PINK, width=2)
-        #     self.add(sqr)
-        #     # note we can't go belo .066 because our default frame rate is 1/15 because we are doing 15fps ffmpeg
-        #     self.wait(0.2)
-            
+        # #FRAME SIX
+        sqr = Polygon(axes.c2p(0, 0, 0), axes.c2p(0, 2, 0), axes.c2p(2, 2, 0),axes.c2p(2, 0, 0), 
+            fill_opacity=1, fill_color=ORANGE, stroke_width=0)
+        self.add(sqr)
+        self.wait(1)
+        fmla_6[0:3].set_color(PINK)
+        self.wait(2)
+
+
+        slices = 20
+        side = 2
+        squares = []
+        shape_color = PINK
+        for i in range(0,slices+1):
+            sqr = Polygon(axes.c2p(0, 0, 0), axes.c2p(0, 2, 0), axes.c2p(2, 2, 0),axes.c2p(2, 0, 0), 
+            fill_opacity=1, fill_color=PINK, stroke_width=0).shift(i*0.1*OUT)
+            squares.append(sqr)
+            sqr.set_stroke(color=PINK, width=2)
+            self.add(sqr)
+            # note we can't go belo .066 because our default frame rate is 1/15 because we are doing 15fps ffmpeg
+            self.wait(0.2)
+
+        #FRAME SEVEN
+
+        fmla_7 = Tex(r"$4\rvert_{0}^{2}$", font_size=100)
+        self.add_fixed_in_frame_mobjects(fmla_7)
+        fmla_7[0].set_color(PINK)
+        fmla_7.next_to(fmla_6,DOWN)
+        self.wait(2)
+
+        fmla_8 = Tex(r"$(4(2)-4(0))$", font_size=100)
+        self.add_fixed_in_frame_mobjects(fmla_8)
+        fmla_8[0].set_color(PINK)
+        fmla_8.next_to(fmla_7,DOWN)
+        self.wait(2)
+
+        fmla_9 = Tex("Volume = 8", font_size=100)
+        self.add_fixed_in_frame_mobjects(fmla_9)
+        fmla_9[0].set_color(BLUE)
+        fmla_9.next_to(fmla_8,DOWN)
+        self.wait(0.5)
+
+        prism = Prism(dimensions=axes.c2p(2,2,2))
+        self.add_fixed_in_frame_mobjects(prism)
+        self.wait(2)
 
 
 
-        # LATEX PIECES
-        # fmla_1 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$\int_{0}^{2}1dx$",r"$dydz$", font_size=100)
-        # self.add_fixed_in_frame_mobjects(fmla_1)
-        # fmla_1[2].set_color(GREEN)
-        # self.wait(2)
-        # self.remove(fmla_1)
-        # self.wait(2)
-
-        # fmla_2 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$x\rvert_{0}^{2}$",r"$dydz$", font_size=100)
-        # self.add_fixed_in_frame_mobjects(fmla_2)
-        # fmla_2[2].set_color(GREEN)
-        # self.wait(2)
-        # self.remove(fmla_2)
-        # self.wait(2)
-
-        # fmla_3 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$", r"2",r"$dydz$", font_size=100)
-        # self.add_fixed_in_frame_mobjects(fmla_3)
-        # fmla_3[2].set_color(GREEN)
-        # self.wait(2)
-        # self.remove(fmla_3)
-        # self.wait(2)
-
-        # fmla_3a = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2} 2 dy $",r"$dz$", font_size=100)
-        # self.add_fixed_in_frame_mobjects(fmla_3a)
-        # fmla_3a[1].set_color(ORANGE)
-        # self.wait(2)
-        # self.remove(fmla_3a)
-        # self.wait(2)
-
-        # fmla_4 = Tex(r"$\int_{0}^{2}$",r"$2y\rvert_{0}^{2}$",r"$dz$", font_size=100)
-        # self.add_fixed_in_frame_mobjects(fmla_4)
-        # fmla_4[1].set_color(ORANGE)
-        # self.wait(2)
-        # self.remove(fmla_4)
-        # self.wait(2)
-
-        # fmla_5 = Tex(r"$\int_{0}^{2}$",r"4",r"$dz$", font_size=100)
-        # self.add_fixed_in_frame_mobjects(fmla_5)
-        # fmla_5[1].set_color(ORANGE)
-        # self.wait(2)
-        # self.remove(fmla_5)
-        # self.wait(2)
-
-        # fmla_6 = Tex(r"$4\rvert_{0}^{2}$", font_size=100)
-        # self.add_fixed_in_frame_mobjects(fmla_6)
-        # fmla_6[1].set_color(PINK)
-        # self.wait(2)
-        # self.remove(fmla_6)
-        # self.wait(2)
-
-        # fmla_7 = Tex(r"$(4(2)-4(0))$", font_size=100)
-        # self.add_fixed_in_frame_mobjects(fmla_7)
-        # fmla_7[1].set_color(PINK)
-        # self.wait(2)
-        # self.remove(fmla_7)
-        # self.wait(2)
-
-        # fmla_8 = Tex("Volume = 8", font_size=100)
-        # self.add_fixed_in_frame_mobjects(fmla_8)
-        # fmla_8[1].set_color(BLUE)
-        # self.wait(2)
-        # self.remove(fmla_8)
-        # self.wait(2)
 
 
 
