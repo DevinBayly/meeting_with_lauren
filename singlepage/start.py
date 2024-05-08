@@ -27,7 +27,6 @@ st.markdown("---")
 c1,c2 = st.columns(2)
 
 
-c1.video("HelloLaTeX.mp4")
 c2.markdown("""
 ### Iterated integral overview
 """)
