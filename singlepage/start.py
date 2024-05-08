@@ -21,7 +21,7 @@ top1.write("# Your Title of the project")
 # using the """ allows you to make multiple line strings in python
 st.write("""
 ## Introduction Welcome Statement
-[title] is an interactive tool designed for students to build intuition with multi-dimensional integration. Our videos utilize Manim Animation to help users make connections between integrals on paper and integrals in 3D space. 
+This page is an interactive tool designed for students to build intuition with multi-dimensional integration. Our videos utilize Manim Animation to provide users with a visual breakdown of the iterated integration process. Utilize the widgets below to learn more!
 """)
 st.markdown("---")
 c1,c2 = st.columns(2)
