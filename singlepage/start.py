@@ -37,10 +37,10 @@ option = st.selectbox(
 
 st.write('You selected:', option)
 if option ==  "Cylinder":
-    st.video("CylinderExample.mp4") 
+    st.video("singlepage/CylinderExample.mp4") 
 elif option == "Box":
-    st.video("CubeExample.mp4")
+    st.video("singlepage/CubeExample.mp4")
 elif option == "Sphere":
-    st.video("SphereExample.mp4")
+    st.video("singlepage/SphereExample.mp4")
 elif option == "Wedge":
-    st.video("Wedge.mp4")
+    st.video("singlepage/Wedge.mp4")
