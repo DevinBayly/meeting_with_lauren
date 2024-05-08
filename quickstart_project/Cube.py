@@ -28,9 +28,7 @@ class CubeExample(ThreeDScene):
         self.wait(0.1)
 
 
-        # TODO see if we can make the bounds smaller fonts
         fmla_1 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$\int_{0}^{2} 1 dx$",r"$dy dz$", font_size=70)
-        # move to the up right corner
         fmla_1.next_to(intro_text,DOWN*2)
         fmla_1.move_to(RIGHT*2)
 
@@ -58,11 +56,8 @@ class CubeExample(ThreeDScene):
         fmla_2 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$",r"$x\rvert_{0}^{2}$",r"$dydz$", font_size=85)
         fmla_2.next_to(fmla_1,DOWN)
         self.add_fixed_in_frame_mobjects(fmla_2)
-        #self.play(Write(fmla_2))
         fmla_2[2].set_color(GREEN)
         self.wait(3)
-        # self.add_fixed_in_frame_mobjects(fmla_2)
-        # self.wait(2)
 
         fmla_3 = Tex(r"$\int_{0}^{2}$",r"$\int_{0}^{2}$", r"2",r"$dy$",r"$dz$", font_size=85)
         fmla_3.next_to(fmla_2,DOWN)
