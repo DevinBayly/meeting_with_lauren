@@ -92,7 +92,7 @@ using integration""")
         otheta = self.camera.get_theta()
         self.move_camera(phi=70 * DEGREES, theta=30 * DEGREES)
         #print("addign in lines to fill 2d circle")
-        ## sp.fmla_ur_1[1].set_color(sp.shape_color_1)
+        sp.fmla_ur_1[1].set_color(sp.shape_color_1)
         lines=[]
         ### set up inner and outer radii
         # TODO recall when the colors need to change to blue
@@ -140,7 +140,7 @@ using integration""")
         # TODO remove this temporary line when connecting to the moved upper right fmla
         sp.fmla_7.center()
         sp.fmla_7.to_edge(UP)
-        # sp.fmla_7.next_to(sp.fmla_ur_1,DOWN)
+        sp.fmla_7.next_to(sp.fmla_ur_1,DOWN)
         self.play(Write(sp.fmla_7))
         self.wait(2)
 
@@ -158,6 +158,7 @@ using integration""")
 
         sp.fmla_ur_2.generate_target()
         sp.fmla_ur_2.target.to_edge(UR)
+        self.remove(sp.fmla_ur_1)
         self.remove(sp.fmla_7)
         self.remove(sp.fmla_8)
         self.play(MoveToTarget(sp.fmla_ur_2))
