@@ -34,12 +34,14 @@ c2.markdown("""
 
 option = st.selectbox(
     'select a shape for integration',
-    ('Cone','Box','Sphere',"Wedge"))
+    ('Cylinder','Box','Sphere',"Wedge"))
 
 st.write('You selected:', option)
-if option == "Cone":
-    st.video("Cone.mp4")
+if option ==  "Cylinder":
+    st.video("CylinderExample.mp4") 
 elif option == "Box":
-    st.video("CartesianExample.mp4")
+    st.video("CubeExample.mp4")
 elif option == "Sphere":
-    st.video("SphereExample(1).mp4")
+    st.video("SphereExample.mp4")
+elif option == "Wedge":
+    st.video("Wedge.mp4")
